@@ -3,7 +3,7 @@ import botocore.session
 import json
 from aws_secretsmanager_caching import SecretCache, SecretCacheConfig 
 
-client = botocore.session.get_session().create_client('secretsmanager',region_name='ap-south-1')
+client = botocore.session.get_session().create_client('secretsmanager')
 cache_config = SecretCacheConfig()
 cache = SecretCache( config = cache_config, client = client)
 def get_db_details():
