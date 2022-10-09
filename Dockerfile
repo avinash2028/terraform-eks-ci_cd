@@ -1,6 +1,6 @@
 FROM python:3.8-alpine
 WORKDIR /app
-COPY app.py requirements.txt config.py /app/
+COPY app.py requirements.txt config.py model.py /app/
 RUN apk update \
     && apk add --virtual build-deps gcc python3-dev musl-dev \
     && apk add --no-cache mysql-dev
