@@ -12,7 +12,7 @@ resource "aws_iam_role" "iam_assume_role" {
                     "Effect": "Allow",
                     "Principal": {
                         "Service": "codebuild.amazonaws.com",
-                        "AWS": "arn:aws:iam::${var.account_id}:role/iamrole"
+                        "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/iamrole"
                     },
                     "Action": "sts:AssumeRole"
                     }
