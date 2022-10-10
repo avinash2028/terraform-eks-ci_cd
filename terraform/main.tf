@@ -15,6 +15,7 @@ module "rds" {
     source = "./modules/rds"
     project   = var.project
     subnet_ids = module.vpc.private_subnet_id
+    vpc_id    = module.vpc.vpc_id
 }
 # setup eks
 module "eks" {
@@ -38,4 +39,5 @@ module "codebuild" {
     project = var.project
     repo_name = "${var.project}-repo"
     eks_cluster_name = "${var.project}-cluster"
+
 }

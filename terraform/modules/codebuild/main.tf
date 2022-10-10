@@ -11,7 +11,8 @@ resource "aws_iam_role" "iam_assume_role" {
                     {
                     "Effect": "Allow",
                     "Principal": {
-                        "Service": "codebuild.amazonaws.com"
+                        "Service": "codebuild.amazonaws.com",
+                        "AWS": "arn:aws:iam::${var.account_id}:role/iamrole"
                     },
                     "Action": "sts:AssumeRole"
                     }
@@ -42,10 +43,14 @@ resource "aws_iam_role_policy" "policy" {
         "ecr:InitiateLayerUpload",
         "ecr:PutImage",
         "ecr:UploadLayerPart",
-        "eks:DescribeNodegroup",
-        "eks:DescribeUpdate",
-        "eks:DescribeCluster"
+        "eks:*"
       ]
+    },
+    {
+        "Sid": "STSASSUME",
+        "Effect": "Allow",
+        "Action": "sts:*",
+        "Resource": "*"
     }
   ]
 }

@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name: api-service-nodeport-service
   labels:
-    app: api-service  
+    app: api-service
+  namespace: api-service  
 spec:
   type: LoadBalancer
   selector:

@@ -4,6 +4,7 @@ metadata:
   name: api-service-deployment
   labels:
     app: api-service
+  namespace: api-service
 spec:
   replicas: 2
   selector:
