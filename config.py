@@ -7,6 +7,6 @@ client = botocore.session.get_session().create_client('secretsmanager', region_n
 cache_config = SecretCacheConfig()
 cache = SecretCache( config = cache_config, client = client)
 def get_db_details():
-    secret = cache.get_secret_string('poc-project-rds_admin')
+    secret = cache.get_secret_string('poc-project-rdsdb')
     db_details = json.loads(secret)
     return db_details
