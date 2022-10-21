@@ -6,3 +6,6 @@ variable account_id {
   default     = ""
   description = "account no"
 }
+
+variable branch_name {
+}

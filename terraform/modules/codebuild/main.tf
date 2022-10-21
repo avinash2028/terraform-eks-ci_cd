@@ -102,6 +102,7 @@ resource "aws_codebuild_project" "code-build" {
     location        = "https://github.com/avinash2028/terraform-eks-ci_cd.git"
     git_clone_depth = 1
   }
+  source_version = var.branch_name
 
   tags = {
     Environment = "${var.project}"

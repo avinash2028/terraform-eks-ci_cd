@@ -11,12 +11,12 @@ module "vpc" {
 
 }
 # RDS setup 
-module "rds" {
-    source = "./modules/rds"
-    project   = var.project
-    subnet_ids = module.vpc.private_subnet_id
-    vpc_id    = module.vpc.vpc_id
-}
+# module "rds" {
+#     source = "./modules/rds"
+#     project   = var.project
+#     subnet_ids = module.vpc.private_subnet_id
+#     vpc_id    = module.vpc.vpc_id
+# }
 # setup eks
 module "eks" {
     source = "./modules/eks"
@@ -33,11 +33,17 @@ module "ecr" {
     source = "./modules/ecr"
     project   = var.project
 }
+# code commit
+module "codecommit" {
+    source = "./modules/codecommit"
+    repository_name = "${var.project}-app"
+}
 # Code build
 module "codebuild" {
     source = "./modules/codebuild"
     project = var.project
     repo_name = "${var.project}-repo"
     eks_cluster_name = "${var.project}-cluster"
+    branch_name = var.branch_name
 
 }

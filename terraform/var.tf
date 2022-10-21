@@ -38,3 +38,4 @@ variable "tags" {
     "Owner"       = "avinash"
   }
 }
+variable "branch_name" {}
