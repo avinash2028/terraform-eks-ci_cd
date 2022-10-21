@@ -1,6 +1,2 @@
 Flask
-flask-mysqldb
-boto3
-aws_secretsmanager_caching
-mysql-connector
 

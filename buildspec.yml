@@ -2,7 +2,7 @@ version: 0.2
 env:
   variables:
     IMAGE_TAG: latest
-    ROLE: "- rolearn: $EKS_ROLE_ARN\n      username: codebuild\n      groups:\n        - system:masters"
+    ROLE: "- rolearn: $EKS_ROLE_ARN\n      username: build\n      groups:\n        - system:masters"
 phases:
   pre_build:
     commands:
@@ -23,7 +23,5 @@ phases:
   post_build:
     commands:
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn $EKS_ROLE_ARN
-      - 
-
       - kubectl apply -f kube-manifests/
       
